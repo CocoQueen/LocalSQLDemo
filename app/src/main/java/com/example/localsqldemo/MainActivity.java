@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void insertStudent(View view) {
+
         Student student = new Student();
         student.setAddress(adress.getText().toString().trim());
         student.setAge(age.getText().toString().trim());
