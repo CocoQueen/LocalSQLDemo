@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mBtnInsert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insertStudent"
+            android:text="学生信息插入" />
+
+        <Button
+            android:id="@+id/mBtnQuery"
+            android:onClick="queryStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学生信息查询" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/studentNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="学号" />
+
+        <EditText
+            android:text="15"
+            android:id="@+id/age"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="年龄" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:text="18888888888"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="手机号" />
+
+        <EditText
+            android:id="@+id/sex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="性别" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="姓名" />
+
+        <EditText
+            android:id="@+id/adress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="未知"
+            android:hint="家庭住址" />
+
+        <EditText
+            android:id="@+id/schoolName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="清华大学"
+            android:hint="学校名字" />
+
+        <EditText
+            android:id="@+id/grade"
+            android:layout_width="0dp"
+            android:text="二年级"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="年级" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
