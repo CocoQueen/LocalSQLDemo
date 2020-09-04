@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.database.greenDao.db.DaoMaster;
 import com.database.greenDao.db.DaoSession;
+import com.database.greenDao.db.MyDaoMaster;
+
+import org.greenrobot.greendao.database.Database;
 
 /**
  * @Author Coco
@@ -22,8 +25,9 @@ public class MyApp extends Application {
     }
 
     private void initGreenDao() {
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "LocalSQL.db");
+        MyDaoMaster helper = new MyDaoMaster(this, "LocalSQL.db");
         SQLiteDatabase db = helper.getWritableDatabase();
+//        Database db = helper.getEncryptedWritableDb("123456");
         DaoMaster daoMaster = new DaoMaster(db);
         daoSession = daoMaster.newSession();
     }
