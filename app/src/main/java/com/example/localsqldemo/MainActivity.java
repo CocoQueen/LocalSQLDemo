@@ -12,8 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.database.greenDao.db.DaoSession;
+import com.database.greenDao.db.MyDaoMaster;
 import com.database.greenDao.db.StudentDao;
+import com.example.localsqldemo.entity.BankCard;
+import com.example.localsqldemo.entity.Father;
 import com.example.localsqldemo.entity.IdCard;
+import com.example.localsqldemo.entity.Person;
+import com.example.localsqldemo.entity.Son;
 import com.example.localsqldemo.entity.Student;
 import com.google.gson.Gson;
 
@@ -116,9 +121,6 @@ public class MainActivity extends AppCompatActivity {
     public void queryStudent(View view) {
         queryByMessage();
 //        queryListByMessage();
-//        List<Student> students = daoSession.loadAll(Student.class);
-//        StudentInfoAdapter adapter = new StudentInfoAdapter(students);
-//        recycler.setAdapter(adapter);
     }
 
     //查询所有性别为女的数据
@@ -147,16 +149,76 @@ public class MainActivity extends AppCompatActivity {
                 String idNo = sss.getIdCard().getIdNo();
                 Log.e(TAG, "queryByMessage: " + studentNo + "====" + idNo);
             }
-//            for (IdCard card : list1) {
-//                Long id = card.getId();
-//                Long id1 = sss.getId();
-//                String userName = card.getUserName();
-//                String name = sss.getName();
-//                if (id1.equals(id) && userName.equals(name)) {
-//                    Log.e(TAG, "queryByMessage: " + card.getUserName());
-//                }
-//            }
         }
         return list;
+    }
+
+    public void clearSQL(View view) {
+        daoSession.clear();
+    }
+
+    public void insertSon(View view) {
+
+        for (int i = 0; i < 5; i++) {
+            Son son = new Son();
+            Father father = new Father();
+            son.setName("儿子" + i);
+            son.setAge(i + "");
+            father.setAge("" + (i + 20));
+            father.setName("父亲" + i);
+            daoSession.insert(son);
+            daoSession.insert(father);
+        }
+        List<Son> sons = daoSession.loadAll(Son.class);
+        List<Father> fathers = daoSession.loadAll(Father.class);
+        String s = new Gson().toJson(sons);
+        String s1 = new Gson().toJson(fathers);
+        Log.e(TAG, "insertSonson:" + s);
+        Log.e(TAG, "insertSon: " + s1);
+
+        for (Son sB : sons) {
+            String name = sB.getFather().getName();
+            String name1 = sB.getName();
+            Log.e(TAG, "insertSon: " + name1 + "AND" + name);
+        }
+
+    }
+
+    public void insertBank(View view) {
+//        daoSession.deleteAll(Person.class);
+//        daoSession.deleteAll(BankCard.class);
+        List<Person> list = daoSession.queryBuilder(Person.class).list();
+        for (Person son : list) {
+            List<BankCard> bankCards = son.getBankCards();
+            for (BankCard father : bankCards) {
+                String name1 = father.getName();
+                if ("妲己".equals(name1)) {
+                    Log.e(TAG, "insertBank: " + father.getCardNum() + "===" + son.getName());
+                }
+            }
+        }
+
+    }
+
+    public void insertPerson(View view) {
+        Person person = new Person();
+        person.setName(name.getText().toString().trim());
+        daoSession.insert(person);
+        BankCard bankCard = new BankCard();
+        String strRand = "";
+        for (int i = 0; i < 10; i++) {
+            strRand += String.valueOf((int) (Math.random() * 10));
+        }
+        bankCard.setCardNum(strRand);
+        bankCard.setName(name.getText().toString().trim());
+        bankCard.setBankId(person.getId());
+        daoSession.insert(bankCard);
+
+        List<Person> people = daoSession.loadAll(Person.class);
+        List<BankCard> bankCards = daoSession.loadAll(BankCard.class);
+        String peo = new Gson().toJson(people);
+        String bank = new Gson().toJson(bankCards);
+        Log.e(TAG, "insertPersonpeo: " + peo);
+        Log.e(TAG, "insertPerson: " + bank);
     }
 }

@@ -16,15 +16,45 @@
             android:id="@+id/mBtnInsert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:onClick="insertStudent"
             android:text="学生信息插入" />
 
         <Button
             android:id="@+id/mBtnQuery"
-            android:onClick="queryStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="queryStudent"
             android:text="学生信息查询" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clearSQL"
+            android:text="清空数据库" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="insertSon"
+            android:text="父子关系插入" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="insertBank"
+            android:text="银行卡" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="insertPerson"
+            android:text="人" />
     </LinearLayout>
 
     <LinearLayout
@@ -41,20 +71,20 @@
             android:hint="学号" />
 
         <EditText
-            android:text="15"
             android:id="@+id/age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="年龄" />
+            android:hint="年龄"
+            android:text="15" />
 
         <EditText
             android:id="@+id/phone"
-            android:text="18888888888"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="手机号" />
+            android:hint="手机号"
+            android:text="18888888888" />
 
         <EditText
             android:id="@+id/sex"
@@ -75,24 +105,24 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="未知"
-            android:hint="家庭住址" />
+            android:hint="家庭住址"
+            android:text="未知" />
 
         <EditText
             android:id="@+id/schoolName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="清华大学"
-            android:hint="学校名字" />
+            android:hint="学校名字"
+            android:text="清华大学" />
 
         <EditText
             android:id="@+id/grade"
             android:layout_width="0dp"
-            android:text="二年级"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="年级" />
+            android:hint="年级"
+            android:text="二年级" />
 
     </LinearLayout>
 

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.localsqldemo.entity.Person;
+
 import org.greenrobot.greendao.database.Database;
 
 /**
@@ -36,7 +38,7 @@ public class MyDaoMaster extends DaoMaster.OpenHelper {
             public void onDropAllTables(Database db, boolean ifExists) {
                 DaoMaster.dropAllTables(db, ifExists);
             }
-        }, StudentDao.class, IdCardDao.class, FatherDao.class, SonDao.class);
+        }, StudentDao.class, IdCardDao.class, FatherDao.class, SonDao.class, BankCardDao.class, PersonDao.class);
         Log.e(TAG, "onUpgrade: " + oldVersion + " newVersion = " + newVersion);
     }
 }
