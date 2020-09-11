@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             List<BankCard> bankCards = son.getBankCards();
             for (BankCard father : bankCards) {
                 String name1 = father.getName();
-                if ("妲己".equals(name1)) {
+                if ("rt".equals(name1)) {
                     Log.e(TAG, "insertBank: " + father.getCardNum() + "===" + son.getName());
                 }
             }

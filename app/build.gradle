@@ -28,7 +28,7 @@ android {
     }
 }
 greendao {
-    schemaVersion 6 //数据库版本号
+    schemaVersion 8 //数据库版本号
     // 设置DaoMaster、DaoSession、Dao 包名
     daoPackage 'com.database.greenDao.db'
     targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录,请注意，这里路径用/不要用.
@@ -49,5 +49,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     implementation 'com.jakewharton:butterknife:10.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'net.zetetic:android-database-sqlcipher:3.5.9'
+    implementation 'net.zetetic:android-database-sqlcipher:4.3.0'
+    implementation "androidx.sqlite:sqlite:2.0.1"
 }
