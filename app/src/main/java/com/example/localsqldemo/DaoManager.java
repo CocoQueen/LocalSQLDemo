@@ -30,7 +30,7 @@ public class DaoManager {
      *
      * @return
      */
-    public static DaoManager getInstance() {
+    static DaoManager getInstance() {
         return manager;
     }
 
@@ -47,7 +47,7 @@ public class DaoManager {
      *
      * @return
      */
-    public DaoMaster getDaoMaster() {
+    private DaoMaster getDaoMaster() {
         if (sDaoMaster == null) {
             DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, DB_NAME, null);
             sDaoMaster = new DaoMaster(helper.getWritableDatabase());
@@ -73,7 +73,7 @@ public class DaoManager {
     /**
      * 打开输出日志，默认关闭
      */
-    public void setDebug() {
+    private void setDebug() {
         if (BuildConfig.DEBUG) {
             QueryBuilder.LOG_SQL = true;
             QueryBuilder.LOG_VALUES = true;
@@ -88,14 +88,14 @@ public class DaoManager {
         closeDaoSession();
     }
 
-    public void closeHelper() {
+    private void closeHelper() {
         if (sHelper != null) {
             sHelper.close();
             sHelper = null;
         }
     }
 
-    public void closeDaoSession() {
+    private void closeDaoSession() {
         if (sDaoSession != null) {
             sDaoSession.clear();
             sDaoSession = null;

@@ -185,18 +185,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void insertBank(View view) {
+        BankCard bankCard = new BankCard(5L, "789456123", "rs", 5L);
+        daoSession.getBankCardDao().update(bankCard);
+        List<BankCard> bankCards = daoSession.getBankCardDao().loadAll();
+        String s = new Gson().toJson(bankCards);
+        Log.e(TAG, "insertBank: ccccc"+s );
 //        daoSession.deleteAll(Person.class);
 //        daoSession.deleteAll(BankCard.class);
-        List<Person> list = daoSession.queryBuilder(Person.class).list();
-        for (Person son : list) {
-            List<BankCard> bankCards = son.getBankCards();
-            for (BankCard father : bankCards) {
-                String name1 = father.getName();
-                if ("rt".equals(name1)) {
-                    Log.e(TAG, "insertBank: " + father.getCardNum() + "===" + son.getName());
-                }
-            }
-        }
+//        List<Person> list = daoSession.queryBuilder(Person.class).list();
+//        for (Person son : list) {
+//            List<BankCard> bankCards = son.getBankCards();
+//            for (BankCard father : bankCards) {
+//                String name1 = father.getName();
+//                if ("rt".equals(name1)) {
+//                    Log.e(TAG, "insertBank: " + father.getCardNum() + "===" + son.getName());
+//                }
+//            }
+//        }
 
     }
 
