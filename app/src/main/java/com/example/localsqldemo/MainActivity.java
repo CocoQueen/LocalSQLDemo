@@ -21,6 +21,7 @@ import com.example.localsqldemo.entity.Person;
 import com.example.localsqldemo.entity.Son;
 import com.example.localsqldemo.entity.Student;
 import com.google.gson.Gson;
+import com.tencent.bugly.beta.Beta;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         recycler.setLayoutManager(new LinearLayoutManager(this));
         daoSession = ((MyApp) getApplication()).getDaoSession();
-
+        Beta.checkUpgrade(false, false);
         List<Student> students = daoSession.loadAll(Student.class);
         StudentInfoAdapter adapter = new StudentInfoAdapter(students);
         recycler.setAdapter(adapter);
@@ -189,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
         daoSession.getBankCardDao().update(bankCard);
         List<BankCard> bankCards = daoSession.getBankCardDao().loadAll();
         String s = new Gson().toJson(bankCards);
-        Log.e(TAG, "insertBank: ccccc"+s );
+        Log.e(TAG, "insertBank: ccccc" + s);
 //        daoSession.deleteAll(Person.class);
 //        daoSession.deleteAll(BankCard.class);
 //        List<Person> list = daoSession.queryBuilder(Person.class).list();
